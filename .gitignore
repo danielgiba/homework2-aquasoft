@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.env
+*.csv
+.vscode/
+.DS_Store
+*.log
+*.sqlite
+*.sqlite3
+*.bak
+*.tmp
+All*Jun25_1.csv
