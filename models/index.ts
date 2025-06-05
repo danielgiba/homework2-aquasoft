@@ -24,13 +24,13 @@ const City = cityModel(sequelize, DataTypes);
 const Region = regionModel(sequelize, DataTypes);
 
 if (Hotel && typeof Hotel.associate === 'function') {
-  Hotel.associate({ City, Region });
+  Hotel.associate({City, Region});
 }
 if (City && typeof City.associate === 'function') {
-  City.associate({ Hotel });
+  City.associate({Hotel});
 }
 if (Region && typeof Region.associate === 'function') {
-  Region.associate({ Hotel });
+  Region.associate({Hotel});
 }
 
-export { sequelize, Hotel, City, Region };
+export {sequelize, Hotel, City, Region};

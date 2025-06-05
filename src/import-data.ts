@@ -135,7 +135,7 @@ fs.createReadStream(csvFilePath)
           updatedAt: new Date(),
         });
 
-        //console.log(`Imported hotel FOR TESTING => ${hotel.GlobalPropertyName}`);
+        //console.log(`imported hotel FOR TESTING => ${hotel.GlobalPropertyName}`);
       }
 
       console.log('imported succesfully!');
