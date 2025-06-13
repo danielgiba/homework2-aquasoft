@@ -8,14 +8,14 @@ export const authToken = (req: Request, res: Response, next: NextFunction): void
   const token = authHeader && authHeader.split(' ')[1];
   //get token for postman
   if (!token) {
-    res.status(401).json({error: 'token missing' });
+    res.status(401).json({error: 'token missing'});
     return;
   }
 
   jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
     //try the token using secretKey from .env
     if (err) {
-      res.status(403).json({error: 'Invalid token' });
+      res.status(403).json({error: 'invalid token!'});
       return;
     }
     (req as any).user = user;

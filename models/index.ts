@@ -1,12 +1,13 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import dotenv from 'dotenv';
-//import models
+
 import hotelModel from './hotel';
 import cityModel from './city';
 import regionModel from './region';
+import reviewModel from './review';
 
 dotenv.config();
-//connect to pg
+
 const sequelize = new Sequelize(
   process.env.DB_NAME!,
   process.env.DB_USERNAME!,
@@ -18,19 +19,15 @@ const sequelize = new Sequelize(
     logging: false
   }
 );
-//init models w/ sequelize
+
 const Hotel = hotelModel(sequelize, DataTypes);
 const City = cityModel(sequelize, DataTypes);
 const Region = regionModel(sequelize, DataTypes);
+const Review = reviewModel(sequelize); 
 
-if (Hotel && typeof Hotel.associate === 'function') {
-  Hotel.associate({City, Region});
-}
-if (City && typeof City.associate === 'function') {
-  City.associate({Hotel});
-}
-if (Region && typeof Region.associate === 'function') {
-  Region.associate({Hotel});
-}
+if (Hotel.associate) Hotel.associate({ City, Region, Review });
+if (City.associate) City.associate({ Hotel });
+if (Region.associate) Region.associate({ Hotel });
+if (Review.associate) Review.associate({ Hotel });
 
-export {sequelize, Hotel, City, Region};
+export { sequelize, Hotel, City, Region, Review };

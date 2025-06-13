@@ -9,6 +9,11 @@ export default (sequelize: Sequelize, dataTypes: typeof DataTypes) => {
         as: 'City'
       });
 
+      Hotel.hasMany(models.Review, { 
+        foreignKey: 'HotelID', 
+        as: 'Reviews' 
+      });
+
       Hotel.belongsTo(models.Region, {
         foreignKey: 'PropertyStateProvinceID',
         as: 'Region'
